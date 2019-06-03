@@ -4,4 +4,4 @@ export const queries = [Datasource.Query]
 
 export const mutations = [Datasource.Mutation]
 
-export const types = [Datasource.Types]
+export const types = [...Datasource.Types]
