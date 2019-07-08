@@ -1,6 +1,6 @@
 {
   "name": "@things-factory/datasource-base",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist-server/index.js",
   "browser": "client/index.js",
   "things-factory": true,
@@ -23,7 +23,12 @@
     "migration:revert": "node ./node_modules/typeorm/cli.js migration:revert"
   },
   "dependencies": {
+    "@things-factory/auth-base": "*",
     "@things-factory/shell": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@things-factory/auth-ui-jwt": "*",
+    "@things-factory/menu-ui": "*",
+    "@things-factory/resource-ui": "*"
+  }
 }

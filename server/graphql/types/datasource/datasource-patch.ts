@@ -4,5 +4,6 @@ export const DatasourcePatch = gql`
   input DatasourcePatch {
     name: String
     description: String
+    credential: String
   }
 `

@@ -1,4 +1,5 @@
 import { Entity, Index, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { User } from '@things-factory/auth-base'
 import { Domain, DomainBaseEntity } from '@things-factory/shell'
 
 @Entity('datasources')
@@ -11,11 +12,6 @@ export class Datasource extends DomainBaseEntity {
   domain: Domain
 
   @Column('text', {
-    nullable: true
-  })
-  credential: string
-
-  @Column('text', {
     unique: true,
     nullable: false
   })
@@ -25,4 +21,15 @@ export class Datasource extends DomainBaseEntity {
     nullable: true
   })
   description: string
+
+  @Column('text', {
+    nullable: true
+  })
+  credential: string
+
+  @ManyToOne(type => User)
+  creator: User
+
+  @ManyToOne(type => User)
+  updater: User
 }

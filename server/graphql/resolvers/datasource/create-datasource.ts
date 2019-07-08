@@ -4,13 +4,12 @@ import { getRepository } from 'typeorm'
 import { Datasource } from '../../../entities'
 
 export const createDatasource = {
-  async createDatasource(_, { datasource: attrs }) {
-    const repository = getRepository(Datasource)
-    const newDatasource = {
-      id: uuid(),
-      ...attrs
-    }
-
-    return await repository.save(newDatasource)
+  async createDatasource(_: any, { datasource }, context: any) {
+    return await getRepository(Datasource).save({
+      domain: context.domain,
+      creatorId: context.state.user.id,
+      updaterId: context.state.user.id,
+      ...datasource
+    })
   }
 }

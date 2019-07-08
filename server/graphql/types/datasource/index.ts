@@ -10,22 +10,22 @@ export const Mutation = `
   ): Datasource
 
   updateDatasource (
-    id: String!
+    name: String!
     patch: DatasourcePatch!
   ): Datasource
 
   deleteDatasource (
-    id: String!
+    name: String!
   ): Datasource
 
   publishDatasource (
-    id: String!
+    name: String!
   ): Datasource
 `
 
 export const Query = `
   datasources(filters: [Filter], pagination: Pagination, sortings: [Sorting]): DatasourceList
-  datasource(id: String!): Datasource
+  datasource(name: String!): Datasource
 `
 
 export const Types = [Filter, Pagination, Sorting, Datasource, NewDatasource, DatasourcePatch, DatasourceList]

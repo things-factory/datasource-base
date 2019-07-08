@@ -4,5 +4,6 @@ export const NewDatasource = gql`
   input NewDatasource {
     name: String!
     description: String
+    credential: String
   }
 `
