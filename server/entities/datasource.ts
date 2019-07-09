@@ -1,10 +1,10 @@
-import { Entity, Index, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { User } from '@things-factory/auth-base'
-import { Domain, DomainBaseEntity } from '@things-factory/shell'
+import { Domain } from '@things-factory/shell'
+import { Column, CreateDateColumn, Entity, Index, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
 @Entity('datasources')
 @Index('ix_datasource_0', (datasource: Datasource) => [datasource.domain, datasource.name], { unique: true })
-export class Datasource extends DomainBaseEntity {
+export class Datasource {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -27,9 +27,19 @@ export class Datasource extends DomainBaseEntity {
   })
   credential: string
 
-  @ManyToOne(type => User)
+  @ManyToOne(type => User, {
+    nullable: true
+  })
   creator: User
 
-  @ManyToOne(type => User)
+  @ManyToOne(type => User, {
+    nullable: true
+  })
   updater: User
+
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
 }
