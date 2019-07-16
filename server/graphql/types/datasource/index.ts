@@ -17,10 +17,6 @@ export const Mutation = `
   deleteDatasource (
     name: String!
   ): Datasource
-
-  publishDatasource (
-    name: String!
-  ): Datasource
 `
 
 export const Query = `
