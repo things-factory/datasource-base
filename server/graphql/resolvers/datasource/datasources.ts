@@ -3,9 +3,9 @@ import { getRepository } from 'typeorm'
 import { Datasource } from '../../../entities'
 
 export const datasourcesResolver = {
-  async datasources(_: any, params: ListParam) {
+  async datasources(_: any, params: ListParam, context: any) {
     const queryBuilder = getRepository(Datasource).createQueryBuilder()
-    buildQuery(queryBuilder, params)
+    buildQuery(queryBuilder, params, context)
     const [items, total] = await queryBuilder
       .leftJoinAndSelect('Datasource.domain', 'Domain')
       .leftJoinAndSelect('Datasource.creator', 'Creator')
